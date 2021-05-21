@@ -1,23 +1,51 @@
-import logo from './logo.svg';
+import {useState,useEffect} from 'react'
+
+import Auth from './components/auth/Auth'
+import Home from './components/Home'
+
+import APIURL from "./helpers/environment.js";
 import './App.css';
 
 function App() {
+  const [sessionToken,setSessionToken]=useState('')
+  const [user,setUser]=useState({});
+  
+  useEffect(()=>{
+    const localToken=localStorage.getItem('token');
+    if (localToken){
+      checkToken(localToken);
+    }
+  },[])
+
+
+
+  const checkToken = async (token) => {
+    const result = await fetch(`${APIURL}/user/`, {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: token,
+      }),
+    });
+    if (result.status === 200) {
+      const user = await result.json();
+      setUser(user);
+    } else {
+      clearToken();
+    }
+  };
+
+  const clearToken=()=>{
+    localStorage.clear();
+    setSessionToken('');
+  }
+  const updateToken=(newToken)=>{
+    setSessionToken(newToken);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Auth updateToken={updateToken} setSessionToken={setSessionToken}/>
     </div>
   );
 }
