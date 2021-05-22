@@ -7,8 +7,8 @@ import APIURL from "./helpers/environment.js";
 import './App.css';
 
 function App() {
-  const [sessionToken,setSessionToken]=useState('')
-  const [user,setUser]=useState({});
+  const [sessionToken,setSessionToken]=useState('');
+  const [adminLogin,setAdminLogin]=useState('false');
   
   useEffect(()=>{
     const localToken=localStorage.getItem('token');
@@ -27,10 +27,7 @@ function App() {
         Authorization: token,
       }),
     });
-    if (result.status === 200) {
-      const user = await result.json();
-      setUser(user);
-    } else {
+    if (result.status !== 200) {
       clearToken();
     }
   };
@@ -40,12 +37,17 @@ function App() {
     setSessionToken('');
   }
   const updateToken=(newToken)=>{
+    console.log("token updated",newToken)
     setSessionToken(newToken);
   }
 
   return (
     <div className="App">
-      <Auth updateToken={updateToken} setSessionToken={setSessionToken}/>
+      {sessionToken===''?
+      <Auth setAdminLogin={setAdminLogin} updateToken={updateToken}/>
+      :
+      <Home adminLogin={adminLogin} sessionToken={sessionToken} clearToken={clearToken}/>
+    }
     </div>
   );
 }
