@@ -2,6 +2,7 @@ import {useState,useEffect} from 'react'
 
 import Auth from './components/auth/Auth'
 import Home from './components/Home'
+import PollDisplay from './components/poll/PollDisplay';
 
 import APIURL from "./helpers/environment.js";
 import './App.css';
@@ -45,7 +46,11 @@ function App() {
 
   return (
     <div className="App">
-      <Auth updateToken={updateToken} setSessionToken={setSessionToken}/>
+      {/* <Auth updateToken={updateToken} setSessionToken={setSessionToken}/> */}
+      <PollDisplay 
+        user={{userName: "Bill Test", isAdmin: false}} 
+        sessionToken={"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxNzYwMTA4LCJleHAiOjE2MjE4NDY1MDh9.9nkWYiFBW5uzWNvzQOu-4UEwLa2dMjZF_mPHX01XSXc"}
+      />
     </div>
   );
 }
