@@ -5,7 +5,7 @@ const HeaderBar = (props) => {
     return (
     
     <div>
-      {props.adminLogin && <button onClick={switchViews}>{props.adminView?"Employee":"Admin"} view</button>}
+      {props.adminLogin && <button onClick={()=>switchViews()}>{props.adminView?"Employee":"Admin"} view</button>}
       <button onClick={props.clearToken}>Logout</button>
     </div>
   );
