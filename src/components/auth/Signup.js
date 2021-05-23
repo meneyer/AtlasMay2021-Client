@@ -1,7 +1,7 @@
-
 import { useState } from "react";
-      import {ButtonToggle, Form, FormGroup, Label, Input, Col} from 'reactstrap'
+import {ButtonToggle, Form, FormGroup, Label, Input, Col} from 'reactstrap'
 import APIURL from "../../helpers/environment.js";
+
 const Signup = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +33,7 @@ const Signup = (props) => {
         setTakenUsername(true);
       }
     }
+  }
 
     return(
         <div>
@@ -70,4 +71,3 @@ const Signup = (props) => {
     )
 }
 export default Signup;
-  
