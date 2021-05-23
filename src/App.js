@@ -46,11 +46,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Auth updateToken={updateToken} setSessionToken={setSessionToken}/> */}
-      <PollDisplay 
-        user={{userName: "Bill Test", isAdmin: false}} 
-        sessionToken={"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxNzYwMTA4LCJleHAiOjE2MjE4NDY1MDh9.9nkWYiFBW5uzWNvzQOu-4UEwLa2dMjZF_mPHX01XSXc"}
-      />
+      <Auth updateToken={updateToken} setSessionToken={setSessionToken}/>
     </div>
   );
 }

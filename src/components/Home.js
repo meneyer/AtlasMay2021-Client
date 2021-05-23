@@ -23,7 +23,10 @@ const Home = ()=> {
             </Route>
           </Switch>
         </Router>
-        <PollDisplay />
+        <PollDisplay 
+        user={{userName: "Bill Test", isAdmin: false}} 
+        sessionToken={"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxNzYwMTA4LCJleHAiOjE2MjE4NDY1MDh9.9nkWYiFBW5uzWNvzQOu-4UEwLa2dMjZF_mPHX01XSXc"}
+      />
       </div>
     );
   
