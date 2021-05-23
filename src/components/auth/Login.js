@@ -1,5 +1,7 @@
 import {useState} from 'react';
+import {ButtonToggle, Form, FormGroup, Label, Input, Col, Container} from 'reactstrap'
 import APIURL from "../../helpers/environment.js";
+
 
 const Login=(props)=>{
 
@@ -34,15 +36,33 @@ const Login=(props)=>{
 
 
     return(
-        <div>login
-            <form onSubmit={(e)=>handleSubmit(e)}>
-                <input placeholder='Username' onChange={(e)=>setUsername(e.target.value)}/>
-                <input placeholder='Password' onChange={(e)=>setPassword(e.target.value)}/>
-                <button onClick={(e)=>handleSubmit(e)}>Submit</button>
-                {badLogin&&<p>Login failed</p>}
+        <div>
+            <Container id="formBackground">
+            <h1>Login</h1>
+    
+            <Form onSubmit={(e)=>handleSubmit(e)}>
+                <FormGroup row>
+                    <Label for="username" md={2} style={{textAlign: 'right'}}>Username:</Label>
+                    <Col md={9}>
+                        <Input placeholder='Username' onChange={(e)=>setUsername(e.target.value)}/>
+                    </Col>
+                </FormGroup>
 
-            </form>
-            <button onClick={()=>props.setShowWhich('signup')}>I need an account</button>
+                <FormGroup row>
+                    <Label for="password" sm={2} style={{textAlign: 'right'}}>Password:</Label>
+                    <Col md={9}>
+                        <Input placeholder='Password' onChange={(e)=>setPassword(e.target.value)}/>
+                    </Col>
+                </FormGroup>
+
+                <ButtonToggle id="formButton" onClick={(e)=>handleSubmit(e)}>Submit</ButtonToggle>
+                {badLogin&&<p>Login failed</p>}
+            </Form>
+
+            <ButtonToggle id="formButton" onClick={()=>props.setShowWhich('signup')}>I need an account</ButtonToggle>
+
+            </Container>
+
         </div>
     )
 }

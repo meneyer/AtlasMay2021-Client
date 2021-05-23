@@ -1,4 +1,6 @@
+
 import { useState } from "react";
+      import {ButtonToggle, Form, FormGroup, Label, Input, Col} from 'reactstrap'
 import APIURL from "../../helpers/environment.js";
 const Signup = (props) => {
   const [username, setUsername] = useState("");
@@ -31,16 +33,18 @@ const Signup = (props) => {
         setTakenUsername(true);
       }
     }
-  };
-  return (
-    <div>
-      signup
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          placeholder="Username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
+
+    return(
+        <div>
+            <h1>Sign Up</h1>
+            <Form onSubmit={(e)=>handleSubmit(e)}>
+                <FormGroup row>
+                    <Label for="username" sm={2} style={{textAlign: 'right'}}>Username:</Label>
+                    <Col sm={9}>
+                        <Input placeholder='Username' onChange={(e)=>setUsername(e.target.value)} />
+                    </Col>
+                </FormGroup>  
+          <input
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -54,11 +58,16 @@ const Signup = (props) => {
         <label for="admin"> Admin user</label>
         <br />
         <button onClick={(e) => handleSubmit(e)}>Submit</button>
-      </form>
-      <button onClick={() => props.setShowWhich("login")}>
+     
+      
+            </Form>
+
+<button onClick={() => props.setShowWhich("login")}>
         I have an account
       </button>
-    </div>
-  );
-};
+
+        </div>
+    )
+}
 export default Signup;
+  
