@@ -2,13 +2,15 @@ import {useState,useEffect} from 'react'
 
 import Auth from './components/auth/Auth'
 import Home from './components/Home'
-
+import SplashPage from './SplashPage'
 import APIURL from "./helpers/environment.js";
 import './App.css';
 
 function App() {
-  const [sessionToken,setSessionToken]=useState('')
-  const [user,setUser]=useState({});
+  const [sessionToken,setSessionToken]=useState('');
+  const [adminLogin,setAdminLogin]=useState(false);
+  const [showAuth,setShowAuth]=useState(false);
+  const [user,setUser]=useState({})
   
   useEffect(()=>{
     const localToken=localStorage.getItem('token');
@@ -27,10 +29,7 @@ function App() {
         Authorization: token,
       }),
     });
-    if (result.status === 200) {
-      const user = await result.json();
-      setUser(user);
-    } else {
+    if (result.status !== 200) {
       clearToken();
     }
   };
@@ -40,12 +39,29 @@ function App() {
     setSessionToken('');
   }
   const updateToken=(newToken)=>{
+    console.log("token updated",newToken)
     setSessionToken(newToken);
   }
-
+  const showThis = ()=>{
+    if(showAuth){
+      if(sessionToken===''){
+        return(
+          <Auth setUser={setUser} setAdminLogin={setAdminLogin} updateToken={updateToken}/> 
+        )
+      } else {
+        return (
+          <Home user={user} adminLogin={adminLogin} sessionToken={sessionToken} clearToken={clearToken}/>
+        )
+      }
+    } else {
+      return(
+        <SplashPage setShowAuth={setShowAuth}/>
+      )
+    }
+  }
   return (
     <div className="App">
-      <Auth updateToken={updateToken} setSessionToken={setSessionToken}/>
+      {showThis()}
     </div>
   );
 }
