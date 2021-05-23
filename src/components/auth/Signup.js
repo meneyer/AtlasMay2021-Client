@@ -24,6 +24,7 @@ const Signup = (props) => {
     if (result.status === 200) {
       props.updateToken(res.sesionToken);
       props.setAdminLogin(isAdmin);
+      props.setUser(res);
     }
     if (res.error) {
       if (res.error.name === "SequelizeUniqueConstraintError") {

@@ -9,15 +9,16 @@ const Auth=(props)=>{
     return(
         
         <div>
-            Auth
             {showWhich=='login'?
                 <Login 
+                    setUser={props.setUser}
                     setAdminLogin={props.setAdminLogin}
                     updateToken={props.updateToken}
                     setShowWhich={setShowWhich}
                 />
                 :
                 <Signup 
+                    setUser={props.setUser}
                     setAdminLogin={props.setAdminLogin}
                     updateToken={props.updateToken}
                     setShowWhich={setShowWhich}

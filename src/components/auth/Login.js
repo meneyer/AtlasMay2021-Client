@@ -25,6 +25,7 @@ const Login=(props)=>{
         if (result.status===200){
             props.updateToken(res.sesionToken);
             props.setAdminLogin(res.isAdmin);
+            props.setUser(res);
         }
         if (res.error) {
             setBadLogin(true)
