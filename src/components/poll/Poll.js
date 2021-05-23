@@ -12,7 +12,9 @@ import {
 
 
 const Poll = (props) => {
-  const {user, token, poll} = props
+  const user = props.user;
+  const sessionToken = props.sessionToken;
+  const poll = props.poll
 
   const [options, setOptions] = useState([]);
 
@@ -23,8 +25,8 @@ const Poll = (props) => {
         {
             method: 'GET',
             headers: new Headers ({
-            'Content-Type': 'application/json',
-            'Authorization': token
+            //'Content-Type': 'application/json',
+            'Authorization': sessionToken
             })
         })
         .then((res) => {
@@ -37,14 +39,16 @@ const Poll = (props) => {
         })
   }
 
-  useEffect(() => {getOptions()});
+  useEffect(() => {
+    if(poll) getOptions();
+  },[poll]);
 
 
   return (
     <Container className="poll-main">
       <Row className="poll-header"> 
         <h1> {Poll}</h1>
-        <p>{`${poll.question}`}</p>
+        <p>{poll ? `${poll.question}` : null}</p>
       </Row>
     </Container>
   )
