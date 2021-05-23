@@ -1,15 +1,40 @@
 import {useState} from 'react';
 import {ButtonToggle, Form, FormGroup, Label, Input, Col, Container} from 'reactstrap'
+import APIURL from "../../helpers/environment.js";
+
 
 const Login=(props)=>{
 
     const [username,setUsername]=useState('')
     const [password,setPassword]=useState('')
-    const handleSubmit=(e)=>{
-        console.log(username,password)
+    const [badLogin,setBadLogin]=useState('')
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setBadLogin(false);
+        const result = await fetch(`${APIURL}/user/login`, {
+          method: "POST",
+          body: JSON.stringify(
+            {
+              userName: username,
+              password: password,
+            },
+          ),
+          headers: new Headers({
+            "Content-Type": "application/json"
+          }),
+        });
+        const res = await result.json();
+        if (result.status===200){
+            props.updateToken(res.sesionToken);
+            props.setAdminLogin(res.isAdmin);
+            props.setUser(res);
+        }
+        if (res.error) {
+            setBadLogin(true)
+        } 
+      };
 
-    }
+
     return(
         <div>
             <Container id="formBackground">
@@ -31,11 +56,13 @@ const Login=(props)=>{
                 </FormGroup>
 
                 <ButtonToggle id="formButton" onClick={(e)=>handleSubmit(e)}>Submit</ButtonToggle>
+                {badLogin&&<p>Login failed</p>}
             </Form>
 
             <ButtonToggle id="formButton" onClick={()=>props.setShowWhich('signup')}>I need an account</ButtonToggle>
 
             </Container>
+
         </div>
     )
 }
