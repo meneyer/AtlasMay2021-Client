@@ -1,32 +1,38 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PollDisplay from './poll/PollDisplay';
+import {useEffect, useState} from "react";
+import HeaderBar from './HeaderBar'
+import AdminIndex from './admin/AdminIndex'
+import PollDisplay from './poll/PollDisplay'
 
-import APIURL from "../helpers/environment";
 
 
-const Home = ()=> {
-  
+const Home = (props)=> {
+    const [adminView,setAdminView]=useState(false)
+    // useEffect(()=>{
+    //   console.log(props.adminLogin);
+    //   setAdminView(props.adminLogin);
+    //   console.log(adminView)
+    // },[]
+    // )
 
     return (
       <div>
-        <Router>
-          <Switch>
-            <Route exact path="/">
-        
-            </Route>
-            <Route path="">
-             
-            </Route>
-            <Route path="">
-             
-            </Route>
-          </Switch>
-        </Router>
-        <PollDisplay 
-        user={{userName: "Bill Test", isAdmin: false}} 
-        sessionToken={"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxNzYwMTA4LCJleHAiOjE2MjE4NDY1MDh9.9nkWYiFBW5uzWNvzQOu-4UEwLa2dMjZF_mPHX01XSXc"}
-      />
+       
+        {props.adminLogin?<p>Admin is logged in</p>:<p>Exmployee is logged in</p>}
+        <HeaderBar 
+          clearToken={props.clearToken} 
+          adminLogin={props.adminLogin} 
+          setAdminView={setAdminView} 
+          adminView={adminView}/>
+        {adminView?
+          <AdminIndex 
+            sessionToken={props.sessionToken}
+          />
+          :
+          <PollDisplay 
+          user={props.user} 
+          sessionToken={props.sessionToken}
+          />
+        }
       </div>
     );
   

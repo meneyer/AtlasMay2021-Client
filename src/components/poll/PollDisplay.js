@@ -53,6 +53,7 @@ const PollDisplay = (props) => {
       </Row>
     </Container>
   )
+
 }
 
 export default PollDisplay;
