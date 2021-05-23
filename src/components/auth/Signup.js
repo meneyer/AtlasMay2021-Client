@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {ButtonToggle, Form, FormGroup, Label, Input, Col} from 'reactstrap'
 
 const Signup=(props)=>{
 
@@ -9,11 +10,17 @@ const Signup=(props)=>{
     }
     return(
         <div>
-            <form onSubmit={(e)=>handleSubmit(e)}>
-                <input placeholder='Username' onChange={(e)=>setUsername(e.target.value)}/>
-                
-            </form>
-            <button/>
+            <h1>Sign Up</h1>
+            <Form onSubmit={(e)=>handleSubmit(e)}>
+                <FormGroup row>
+                    <Label for="username" sm={2} style={{textAlign: 'right'}}>Username:</Label>
+                    <Col sm={9}>
+                        <Input placeholder='Username' onChange={(e)=>setUsername(e.target.value)} />
+                    </Col>
+                </FormGroup>  
+
+            </Form>
+
         </div>
     )
 }

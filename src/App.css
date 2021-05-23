@@ -1,3 +1,49 @@
 .App {
   text-align: center;
 }
+
+/* CUSTOM CSS
+COLOR PALATTE
+font-family: 'Roboto', sans-serif */
+
+
+
+/* Base level CSS */
+#root{
+  /* background-color: white; */
+  /* font-family: ;   */
+  color: black;
+  width: auto;
+  height: 100vh;
+  overflow-x: hidden;
+  /* background-image: url(./assests/adi-goldstein-FU5uVjZSMMw-unsplash.jpg);   */
+  /* background-image: url(./assests/sagar-patil-8UcNYpynFLU-unsplash.jpg);  */
+  /* background-image: url(./assests/luke-besley-Mdz-EpieP3A-unsplash.jpg);  */
+  background-image: url(./assests/siora-photography-QkuVykuAo84-unsplash.jpg);
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#formBackground{
+  background-color: silver;
+  opacity: 80%;
+  border-radius: 2%;
+}
+
+#formButton{
+  transition: 0.4s;
+  background-color: yellow;
+  border: 2px solid black;
+  border-radius: 5%;
+  color: purple;
+}
+
+#formButton:hover{
+  background-color: purple;
+  border: 2px solid black;
+  border-radius: 5%;
+  color: yellow;
+}
+
+
