@@ -4,6 +4,7 @@ import AdminIndex from './admin/AdminIndex'
 import PollDisplay from './poll/PollDisplay'
 
 
+
 const Home = (props)=> {
     const [adminView,setAdminView]=useState(false)
     // useEffect(()=>{
@@ -15,6 +16,7 @@ const Home = (props)=> {
 
     return (
       <div>
+       
         {props.adminLogin?<p>Admin is logged in</p>:<p>Exmployee is logged in</p>}
         <HeaderBar 
           clearToken={props.clearToken} 
@@ -26,8 +28,9 @@ const Home = (props)=> {
             sessionToken={props.sessionToken}
           />
           :
-          <PollDisplay
-            sessionToken={props.sessionToken}
+          <PollDisplay 
+          user={props.user} 
+          sessionToken={props.sessionToken}
           />
         }
       </div>

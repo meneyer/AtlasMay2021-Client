@@ -3,6 +3,7 @@ import {useState,useEffect} from 'react'
 import Auth from './components/auth/Auth'
 import Home from './components/Home'
 import SplashPage from './SplashPage'
+
 import APIURL from "./helpers/environment.js";
 import './App.css';
 
