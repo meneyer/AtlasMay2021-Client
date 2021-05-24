@@ -25,7 +25,7 @@ const Login=(props)=>{
         });
         const res = await result.json();
         if (result.status===200){
-            props.updateToken(res.sesionToken);
+            props.updateToken(res.sessionToken);
             props.setAdminLogin(res.isAdmin);
             props.setUser(res);
         }
