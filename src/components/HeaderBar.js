@@ -7,8 +7,10 @@ const HeaderBar = (props) => {
     return (
     
     <div>
-      {props.adminLogin && <Button id="formButton" onClick={switchViews}>{props.adminView?"Employee":"Admin"} view</Button>}
-      <Button id="formButton" onClick={props.clearToken}>Logout</Button>
+
+      {props.adminLogin && <button id="formButton" onClick={()=>switchViews()}>{props.adminView?"Employee":"Admin"} view</button>}
+      <button id="formButton" onClick={props.clearToken}>Logout</button>
+
     </div>
   );
 };
