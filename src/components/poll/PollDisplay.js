@@ -41,7 +41,7 @@ const PollDisplay = (props) => {
 
   useEffect(() => {getPolls()}, []);
 
-  const pollMapper = () => {
+  const pollButtonMapper = () => {
     return (
       <ListGroup horizontal>
         {polls.map((poll, i) => {
@@ -49,14 +49,11 @@ const PollDisplay = (props) => {
             <ListGroupItem tag="button" key={`poll${i}`} onClick = {() => {setCurrPoll(i)}}>
               <ListGroupItemHeading> {`Poll #${i+1}`} </ListGroupItemHeading>
               <ListGroupItemText> {`${poll.question}`} </ListGroupItemText>
-              
             </ListGroupItem>
           )
         })}
       </ListGroup>
-      
     )
-    
   }
 
 
@@ -66,10 +63,13 @@ const PollDisplay = (props) => {
         <h1> {`Welcome ${user.userName}. Select a poll to answer and view results.`}</h1>
       </Row>
       <Row>
-        {polls.length > 0 ? pollMapper() : null}
+        {polls.length > 0 ? pollButtonMapper() : null}
       </Row>
       <Row>
-        <Poll user={user} sessionToken={props.sessionToken} poll={polls[currPoll]} pollNum={currPoll+1}/>
+        {polls.length > 0 
+          ?<Poll user={user} sessionToken={props.sessionToken} poll={polls[currPoll]} pollNum={currPoll+1}/>
+          :null
+        } 
       </Row>
     </Container>
   )
