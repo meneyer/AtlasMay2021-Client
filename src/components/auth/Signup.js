@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {ButtonToggle, Form, FormGroup, Label, Input, Col} from 'reactstrap'
+import {ButtonToggle, Form, FormGroup, Label, Input, Col, Container} from 'reactstrap'
 import APIURL from "../../helpers/environment.js";
 
 const Signup = (props) => {
@@ -37,6 +37,7 @@ const Signup = (props) => {
 
     return(
         <div>
+          <Container id="formBackground">
             <h1>Sign Up</h1>
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup row>
@@ -44,28 +45,31 @@ const Signup = (props) => {
                     <Col sm={9}>
                         <Input placeholder='Username' onChange={(e)=>setUsername(e.target.value)} />
                     </Col>
-                </FormGroup>  
-          <input
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          onClick={() => setIsAdmin(!isAdmin)}
-          type="checkbox"
-          id="admin"
-          value={isAdmin}
-        />
-        {takenUsername && <p>That username is not available</p>}
-        <label for="admin"> Admin user</label>
-        <br />
-        <button onClick={(e) => handleSubmit(e)}>Submit</button>
-     
-      
-            </Form>
+                </FormGroup> 
 
-<button onClick={() => props.setShowWhich("login")}>
+                <FormGroup row>
+                    <Label for="password" sm={2} style={{textAlign: 'right'}}>Password:</Label>
+                    <Col sm={9}>
+                        <Input placeholder='Password' onChange={(e)=>setPassword(e.target.value)} />
+                    </Col>
+                </FormGroup> 
+
+                <FormGroup check inline>
+                  <Col>
+                  <Label for="admin">Admin User</Label>
+                    <Input onClick={() => setIsAdmin(!isAdmin)} type="checkbox" value={isAdmin} />
+                  </Col>
+                  {takenUsername && <p>That username is not available</p>}
+                </FormGroup>    
+        <br />
+        <br />
+        <ButtonToggle id="formButton" onClick={(e) => handleSubmit(e)}>Submit</ButtonToggle>
+            </Form>
+        <br />
+        <ButtonToggle id="formButton" onClick={() => props.setShowWhich("login")}>
         I have an account
-      </button>
+        </ButtonToggle>
+      </Container>
 
         </div>
     )
