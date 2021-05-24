@@ -4,6 +4,12 @@
 
 /* CUSTOM CSS
 COLOR PALATTE
+Burgundy - 7F1020
+Copper Crayola - DD7245
+Lavendar Blue - C5CDF1
+Silver - C0C0C0
+Russian Violet - #1E064B
+
 font-family: 'Roboto', sans-serif */
 
 
@@ -23,27 +29,48 @@ font-family: 'Roboto', sans-serif */
   background-size: cover; 
   background-position: center;
   background-repeat: no-repeat;
+  padding: 2%;
+  color: #1E064B
 }
 
 #formBackground{
-  background-color: silver;
+  background-color: #DEE2F7;
   opacity: 80%;
-  border-radius: 2%;
+  /* border-radius: 1%; */
+  padding: 1.5%;
+  border: 4px solid #1E064B;
 }
 
 #formButton{
   transition: 0.4s;
-  background-color: yellow;
-  border: 2px solid black;
-  border-radius: 5%;
-  color: purple;
+  background-color: #1E064B;
+  border: 2px solid #1E064B;
+  color: #C5CDF1;
 }
 
 #formButton:hover{
-  background-color: purple;
-  border: 2px solid black;
-  border-radius: 5%;
-  color: yellow;
+  background-color: #C5CDF1;
+  border: 2px solid #1E064B;
+  color: #1E064B;
 }
 
+#splashPageBackground{
+  background-color: #DEE2F7;
+  /* opacity: 80%; */
+  /* border-radius: 1%; */ 
+  padding: 1.5%; 
+  border: 4px solid #1E064B;
+}
+
+#splashPageHeader{
+  font-size: 4em;
+}
+
+#splashPageWords{
+  font-size: 3em;
+}
+
+#splashPageDescription{
+  font-size: 1.5em
+}
 
