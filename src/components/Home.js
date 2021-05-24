@@ -6,7 +6,7 @@ import PollDisplay from './poll/PollDisplay'
 
 
 const Home = (props)=> {
-    const [adminView,setAdminView]=useState(false)
+    const [adminView,setAdminView]=useState(props.adminLogin)
     // useEffect(()=>{
     //   console.log(props.adminLogin);
     //   setAdminView(props.adminLogin);
