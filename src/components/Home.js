@@ -16,7 +16,7 @@ const [adminView,setAdminView]=useState(props.adminLogin)
          adminLogin={props.adminLogin} 
          setAdminView={setAdminView} 
          adminView={adminView}/>
-       {props.adminLogin?<p>Admin is logged in</p>:<p>Exmployee is logged in</p>}
+ <div style={{height:'50px'}}/>
 
        {adminView?
          <AdminIndex 

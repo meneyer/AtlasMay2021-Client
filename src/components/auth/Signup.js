@@ -5,7 +5,7 @@ import APIURL from "../../helpers/environment.js";
 const Signup = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(props.adminLogin);
   const [takenUsername, setTakenUsername] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -24,6 +24,7 @@ const Signup = (props) => {
     });
     const res = await result.json();
     if (result.status === 200) {
+      console.log('admin?',isAdmin)
       props.updateToken(res.sesionToken);
       props.setAdminLogin(isAdmin);
       props.setUser(res);
@@ -45,6 +46,8 @@ const Signup = (props) => {
                     <Col sm={9}>
                         <Input placeholder='Username' onChange={(e)=>setUsername(e.target.value)} />
                     </Col>
+                  {takenUsername && <p>That username is not available</p>}
+
                 </FormGroup> 
 
                 <FormGroup row>
@@ -52,14 +55,15 @@ const Signup = (props) => {
                     <Col sm={9}>
                         <Input placeholder='Password' onChange={(e)=>setPassword(e.target.value)} />
                     </Col>
+                    
                 </FormGroup> 
 
-                <FormGroup check inline>
-                  <Col>
-                  <Label for="admin">Admin User</Label>
-                    <Input onClick={() => setIsAdmin(!isAdmin)} type="checkbox" value={isAdmin} />
+                <FormGroup row>
+                  <Label for="admin" sm={2} style={{textAlign: 'right'}}>Password for admin access:</Label>
+                  <Col sm={9}>
+
+                    <Input placeholder='Enter the secret admin passwrod' onChange={(e) => setIsAdmin(e.target.value==='secretadminpassword')}/>
                   </Col>
-                  {takenUsername && <p>That username is not available</p>}
                 </FormGroup>    
         <br />
         <br />
