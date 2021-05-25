@@ -14,6 +14,7 @@ import {
   ModalFooter
 } from 'reactstrap'
 
+import APIURL from '../../helpers/environment'
 
 const Poll = (props) => {
   const user = props.user;
@@ -26,7 +27,7 @@ const Poll = (props) => {
 
 
   const getOptions = () => {
-    const url = `http://localhost:3000/option/${poll.id}`
+    const url = `${APIURL}/option/${poll.id}`
         fetch(url,
         {
             method: 'GET',
@@ -130,8 +131,32 @@ const Poll = (props) => {
 
   let handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Poll ${pollNum} submitted`)
+    let currOptions = options;
+    currOptions.forEach((option, i) => {
+      if(votes[i]){
+        option.votes += 1
+        updateOptions(option)
+      }
+    })
     
+  }
+
+  let updateOptions = (option) => {
+    const url = `${APIURL}/option/${option.id}`
+
+    fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify(option),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': props.sessionToken
+      })
+    })
+    .then(res => res.json())
+    .then((json) => {
+      console.log(json)
+    })
+    .catch(err => console.log(`Failed to update option: ${err}`))
   }
 
   let renderResults = () => {

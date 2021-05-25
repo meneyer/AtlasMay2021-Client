@@ -10,7 +10,7 @@ import {
 } from 'reactstrap'
 import PollResults from './PollResults';
 import Poll from './Poll';
-
+import APIURL from '../../helpers/environment'
 
 const PollDisplay = (props) => {
   const user = props.user;
@@ -19,7 +19,7 @@ const PollDisplay = (props) => {
 
   const getPolls = () => {
     console.log(props.sessionToken)
-    const url = 'http://localhost:3000/poll/'
+    const url = `${APIURL}/poll/`
         console.log("got to here in fetch")
         fetch(url,
         {
