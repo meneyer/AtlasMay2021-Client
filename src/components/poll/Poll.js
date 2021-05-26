@@ -56,7 +56,7 @@ const Poll = (props) => {
          {options.map((option, i) => {
            return(
             <FormGroup check>
-              <Label check>
+              <Label check id="formLabelsSmaller">
                 <Input 
                   type="checkbox" 
                   onChange={handleMultiInput}
@@ -85,7 +85,7 @@ const Poll = (props) => {
          {options.map((option, i) => {
            return(
             <FormGroup check>
-              <Label check>
+              <Label check id="formLabelsSmaller">
                 <Input 
                   type="radio" 
                   name={`poll_${poll.id}_options`} 
@@ -120,9 +120,11 @@ const Poll = (props) => {
       <Form onSubmit={handleSubmit}>
         <h3>{`Poll #${pollNum}`}</h3>
         <h4>{`${poll.question}`}</h4>
+       
         {poll.multiSelect
         ? renderMultiSelectForm()
         : renderSingleSelectForm()}
+        <br />
         <Button id='formButton'>Submit</Button>
       </Form>
     )
@@ -147,13 +149,13 @@ const Poll = (props) => {
 
   return (
     <Container className="poll-main" >
-      <Row>
-        <Col md="6" id="formBackground">
+      <Row>        
+        <Col md="5" id="formBackgroundAlmostFull">
         {renderPollForm()}
         </Col>
-        <Col md="6" id="formBackground">
+        <Col md="7" id="formBackgroundAlmostFull">
         {renderResults()}
-        </Col>
+        </Col>      
       </Row>
     </Container>
   )
