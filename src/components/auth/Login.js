@@ -16,7 +16,7 @@ const Login=(props)=>{
           body: JSON.stringify(
             {
               userName: username,
-              password: password,
+              password: password
             },
           ),
           headers: new Headers({
@@ -54,9 +54,10 @@ const Login=(props)=>{
                         <Input placeholder='Password' onChange={(e)=>setPassword(e.target.value)}/>
                     </Col>
                 </FormGroup>
+                {badLogin&&<p>Login failed</p>}
+
                 <br />
                 <ButtonToggle id="formButton" onClick={(e)=>handleSubmit(e)}>Submit</ButtonToggle>
-                {badLogin&&<p>Login failed</p>}
             </Form>
             <br />
             <ButtonToggle id="formButton" onClick={()=>props.setShowWhich('signup')}>I need an account</ButtonToggle>
