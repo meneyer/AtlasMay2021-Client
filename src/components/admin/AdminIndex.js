@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Table} from 'reactstrap';
+import CreatePoll from './CreatePoll';
 
 
 const AdminIndex=(props)=>{
@@ -34,7 +35,8 @@ const AdminIndex=(props)=>{
         <td>@twitter</td>
         </tr>
     </tbody>
-    </Table>
+    </Table>   
+    <CreatePoll sessionToken={props.sessionToken}/>
 
         </div>
     )
