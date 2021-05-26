@@ -67,7 +67,12 @@ const PollDisplay = (props) => {
       </Row>
       <Row>
         {polls.length > 0 
-          ?<Poll user={user} sessionToken={props.sessionToken} poll={polls[currPoll]} pollNum={currPoll+1}/>
+          ?<Poll 
+            user={user} 
+            sessionToken={props.sessionToken} 
+            poll={polls[currPoll]} 
+            pollNum={currPoll+1}
+            hasVoted={user.pollsVotedOn.includes(polls[currPoll].id)}/>
           :null
         } 
       </Row>

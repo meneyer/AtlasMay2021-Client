@@ -24,6 +24,8 @@ const Poll = (props) => {
 
   const [options, setOptions] = useState([]);
   const [votes, setVotes] = useState([]);
+  const [selections, setSelections] = useState([]);
+  const [hasVoted, setHasVoted] = useState(props.hasVoted);
 
 
   const getOptions = () => {
@@ -40,15 +42,22 @@ const Poll = (props) => {
         .then((optionData) => {
             setOptions(optionData)
             let makeVotes = [];
-            optionData.forEach(option =>makeVotes.push(option.votes))
+            let makeSelections = [];
+            optionData.forEach(option => {
+              makeVotes.push(option.votes)
+              makeSelections.push(false)
+            })
+              
             setVotes(makeVotes);
-            console.log(makeVotes);
+            setSelections(makeSelections);
+            
         })
         .catch(err => console.log(`Failed option fetch: ${err}`));
   };
 
   useEffect(() => {
     if(poll) getOptions();
+    setHasVoted(props.hasVoted)
   },[poll])
 
   let renderMultiSelectForm = () => {
@@ -72,11 +81,11 @@ const Poll = (props) => {
   }
 
   let handleMultiInput = (e) => {
-    let selected = e.currentTarget.dataset.option_num;
-    let currVotes = votes;
-    currVotes[selected] = e.currentTarget.checked ? 1 : 0;
-    setVotes(currVotes)
-    console.log(votes)
+    let selected = Number(e.currentTarget.dataset.option_num);
+    let currSelections = selections;
+    currSelections[selected] = e.currentTarget.checked;
+    setSelections(currSelections);
+    console.log(selections);
   }
 
   let renderSingleSelectForm = () => {
@@ -104,16 +113,16 @@ const Poll = (props) => {
   let handleSingleInput = (e) => {
     let selected = Number(e.currentTarget.dataset.option_num);
     console.log(selected)
-    let currVotes = votes;
-    for(let i = 0; i < votes.length; i++){
+    let currSelections = selections;
+    for(let i = 0; i < selections.length; i++){
       if(i === selected){
-        currVotes[i] = 1;
+        currSelections[i] = true;
       }else{
-        currVotes[i] = 0;
+        currSelections[i] = false;
       }
     }
-    setVotes(currVotes)
-    console.log(votes)
+    setSelections(currSelections)
+    console.log(selections)
   }
 
   let renderPollForm = () => {
@@ -124,7 +133,7 @@ const Poll = (props) => {
         {poll.multiSelect
         ? renderMultiSelectForm()
         : renderSingleSelectForm()}
-        <Button id='formButton'>Submit</Button>
+        <Button id='formButton' disabled={hasVoted}>Submit</Button>
       </Form>
     )
   }
@@ -132,13 +141,17 @@ const Poll = (props) => {
   let handleSubmit = (e) => {
     e.preventDefault();
     let currOptions = options;
+    let currVotes = votes;
     currOptions.forEach((option, i) => {
-      if(votes[i]){
+      if(selections[i]){
         option.votes += 1
         updateOptions(option)
+        currVotes[i] += 1
       }
     })
-    
+    setVotes(currVotes)
+    setHasVoted(true);
+    updateUser();
   }
 
   let updateOptions = (option) => {
@@ -159,12 +172,33 @@ const Poll = (props) => {
     .catch(err => console.log(`Failed to update option: ${err}`))
   }
 
+  let updateUser = () => {
+    const url = `${APIURL}/user/${user.userId}`
+
+    let updatePollsVotedOn = user.pollsVotedOn
+    updatePollsVotedOn.push(poll.id);
+    console.log(updatePollsVotedOn)
+    fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify({pollsVotedOn: updatePollsVotedOn}),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': props.sessionToken
+      })
+    })
+    .then(res => res.json())
+    .then((json) => {
+      console.log(json)
+    })
+    .catch(err => console.log(`Failed to update user: ${err}`))
+  }
+
   let renderResults = () => {
     return (
       <div>
         <h4> Results Here </h4>
         {options.map((option, i) => 
-          <p>{`${option.text}: ${option.votes}`}</p>
+          <p>{`${option.text}: ${votes[i]}`}</p>
         )}
       </div>
     )
