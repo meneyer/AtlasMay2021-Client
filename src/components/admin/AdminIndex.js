@@ -6,7 +6,7 @@ const AdminIndex=(props)=>{
     return(
         <div>
             <Table hover id= "formBackground">
-      <thead>
+    <thead>
         <tr>
         <th>#</th>
         <th>First Name</th>
