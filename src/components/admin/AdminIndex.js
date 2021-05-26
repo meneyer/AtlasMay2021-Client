@@ -6,7 +6,7 @@ import CreatePoll from './CreatePoll';
 const AdminIndex=(props)=>{
     return(
         <div>
-            <Table hover id= "formBackground">
+            <Table hover id= "formBackgroundOpposite" style={{color: '#DEE2F7'}}>
       <thead>
         <tr>
         <th>#</th>

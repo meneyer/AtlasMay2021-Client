@@ -55,7 +55,7 @@ const Signup = (props) => {
         <h1>Sign Up</h1>
         <Form onSubmit={(e) => handleSubmit(e)}>
           <FormGroup row>
-            <Label for="username" sm={2} style={{ textAlign: "right" }}>
+            <Label for="username" sm={2} id="formLabels">
               Username:
             </Label>
             <Col sm={9}>
@@ -68,7 +68,7 @@ const Signup = (props) => {
           </FormGroup>
 
           <FormGroup row>
-            <Label for="password" sm={2} style={{ textAlign: "right" }}>
+            <Label for="password" sm={2} id="formLabels">
               Password:
             </Label>
             <Col sm={9}>
@@ -81,7 +81,7 @@ const Signup = (props) => {
 
           <FormGroup row>
             
-          <Label for="admin" sm={2} style={{ textAlign: "right",marginTop:'0' }}>
+          <Label for="admin" sm={2} id="formLabels">
               Admin? <Switch
                 onChange={handleChange}
                 checked={checked}
