@@ -40,6 +40,7 @@ function App() {
     setSessionToken('');
   }
   const updateToken=(newToken)=>{
+    localStorage.setItem("token", newToken)
     console.log("token updated",newToken)
     setSessionToken(newToken);
   }

@@ -16,7 +16,7 @@ const Login=(props)=>{
           body: JSON.stringify(
             {
               userName: username,
-              password: password,
+              password: password
             },
           ),
           headers: new Headers({
@@ -42,21 +42,22 @@ const Login=(props)=>{
     
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup row>
-                    <Label for="username" md={2} style={{textAlign: 'right'}}>Username:</Label>
+                    <Label for="username" md={2} id="formLabels" >Username:</Label>
                     <Col md={9}>
                         <Input placeholder='Username' onChange={(e)=>setUsername(e.target.value)}/>
                     </Col>
                 </FormGroup>
 
                 <FormGroup row>
-                    <Label for="password" sm={2} style={{textAlign: 'right'}}>Password:</Label>
+                    <Label for="password" sm={2} id="formLabels" >Password:</Label>
                     <Col md={9}>
                         <Input placeholder='Password' onChange={(e)=>setPassword(e.target.value)}/>
                     </Col>
                 </FormGroup>
+                {badLogin&&<p>Login failed</p>}
+
                 <br />
                 <ButtonToggle id="formButton" onClick={(e)=>handleSubmit(e)}>Submit</ButtonToggle>
-                {badLogin&&<p>Login failed</p>}
             </Form>
             <br />
             <ButtonToggle id="formButton" onClick={()=>props.setShowWhich('signup')}>I need an account</ButtonToggle>
