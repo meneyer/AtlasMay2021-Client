@@ -15,6 +15,7 @@ import {
 } from 'reactstrap'
 
 import APIURL from '../../helpers/environment'
+import PollResults from './PollResults'
 
 const Poll = (props) => {
   const user = props.user;
@@ -193,25 +194,17 @@ const Poll = (props) => {
     .catch(err => console.log(`Failed to update user: ${err}`))
   }
 
-  let renderResults = () => {
-    return (
-      <div>
-        <h4> Results Here </h4>
-        {options.map((option, i) => 
-          <p>{`${option.text}: ${votes[i]}`}</p>
-        )}
-      </div>
-    )
-  }
+  // let renderResults = () => {
+  // }
 
   return (
     <Container className="poll-main" >
       <Row>
         <Col md="6" id="formBackground">
-        {renderPollForm()}
+          {renderPollForm()}
         </Col>
         <Col md="6" id="formBackground">
-        {renderResults()}
+          <PollResults options={options} votes={votes}/>
         </Col>
       </Row>
     </Container>
