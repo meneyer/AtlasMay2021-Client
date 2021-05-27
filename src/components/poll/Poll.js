@@ -129,8 +129,7 @@ const Poll = (props) => {
   let renderPollForm = () => {
     return (
       <Form onSubmit={handleSubmit}>
-        <h3>{`Poll #${pollNum}`}</h3>
-        <h4>{`${poll.question}`}</h4>
+        <h2>{`${poll.question}`}</h2>
         {poll.multiSelect
         ? renderMultiSelectForm()
         : renderSingleSelectForm()}

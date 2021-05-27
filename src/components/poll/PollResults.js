@@ -25,7 +25,9 @@ const PollResults = (props) => {
     setColorList(cl);
   }
 
-  //useEffect(makeColorList());
+  useEffect(() => {
+    makeColorList()
+  }, []);
 
   let genBackgroundColors = () => {
     return colorList.map(color => `rbga(${color[0]}, ${color[1]}, ${color[2]}, 0.2)`)
@@ -42,14 +44,16 @@ const PollResults = (props) => {
       {
         label: '# of Votes',
         data: votes,
+        // backgroundColor: genBackgroundColors(),
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(255, 206, 86, 0.5)',
+          'rgba(75, 192, 192, 0.5)',
+          'rgba(153, 102, 255, 0.5)',
+          'rgba(255, 159, 64, 0.5)',
         ],
+        // borderColor: genBorderColors(),
         borderColor: [
           'rgba(255, 99, 132, 1)',
           'rgba(54, 162, 235, 1)',
@@ -65,9 +69,9 @@ const PollResults = (props) => {
 
   return (
     <Container className="poll-results-main">
-      <button onClick={randColor}>Color</button>
+      {/* <button onClick={randColor}>Color</button> */}
       <Row className="poll-results-header"> 
-        <h1> Results</h1>
+        <h2> Results</h2>
         <Doughnut data={data} />
       </Row>
       

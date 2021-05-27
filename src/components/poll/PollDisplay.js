@@ -66,6 +66,7 @@ const PollDisplay = (props) => {
         {polls.length > 0 ? pollButtonMapper() : null}
       </Row>
       <Row>
+        <h1>{`Poll # ${currPoll+1}`}</h1>
         {polls.length > 0 
           ?<Poll 
             user={user} 
