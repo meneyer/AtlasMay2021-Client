@@ -14,6 +14,7 @@ import APIURL from "../../helpers/environment.js";
 const Signup = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [adminPasswordText,setAdminPasswordText]=useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [takenUsername, setTakenUsername] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -91,10 +92,21 @@ const Signup = (props) => {
              
             {checked&&<Col sm={9}>
               <Input 
-                placeholder="Enter the secret admin passwrod"
-                onChange={(e) =>setIsAdmin(e.target.value==='secretadminpassword')
+                placeholder="Enter the secret admin password"
+                onChange={(e) =>{
+                  setIsAdmin(e.target.value==='secretadminpassword');
+                  setAdminPasswordText(e.target.value);
                 }
+              }
               />
+            </Col>}
+            
+          </FormGroup>
+          <FormGroup row>
+           <Col sm={2}/> 
+             
+            {adminPasswordText.length>0&&!isAdmin&&<Col sm={9}>
+              <p style={{textAlign:"left",color:'red'}}>Invalid admin password</p>
             </Col>}
             
           </FormGroup>
