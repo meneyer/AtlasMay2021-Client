@@ -14,7 +14,6 @@ function App() {
   const [user,setUser]=useState({})
   
   useEffect(()=>{
-    console.log('useeffect')
     const localToken=localStorage.getItem('token');
     if (localToken){
       checkToken(localToken);
@@ -22,7 +21,6 @@ function App() {
   },[])
 
   const checkToken = async (token) => {
-    console.log('checking for a token',token)
     const result = await fetch(`${APIURL}/user/`, {
       method: "GET",
       headers: new Headers({
@@ -30,15 +28,13 @@ function App() {
         Authorization: token,
       }),
     });
-    console.log('checkToken result',result)
     if (result.status !== 200) {
-      console.log('clearing token')
       clearToken();
     } else{
       const json=await result.json();
-      console.log('json',json)
       setUser(json);
       setSessionToken(token)
+      setAdminLogin(json.isAdmin)
     }
   };
  
@@ -50,7 +46,6 @@ function App() {
   }
   const updateToken=(newToken)=>{
     localStorage.setItem("token", newToken)
-    console.log("token updated",newToken)
     localStorage.setItem("token", newToken);
     setSessionToken(newToken);
 
