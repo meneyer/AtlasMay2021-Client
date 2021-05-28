@@ -15,7 +15,6 @@ const CreatePoll=(props)=>{
 
     const changeArray=(text,index)=>{
         optionsArray[index]=text;
-        console.log(optionsArray)
     }
     const addOption=(e)=>{
         e.preventDefault();

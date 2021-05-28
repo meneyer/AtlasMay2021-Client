@@ -14,15 +14,15 @@ function App() {
   const [user,setUser]=useState({})
   
   useEffect(()=>{
+    console.log('useeffect')
     const localToken=localStorage.getItem('token');
     if (localToken){
       checkToken(localToken);
     }
   },[])
 
-
-
   const checkToken = async (token) => {
+    console.log('checking for a token',token)
     const result = await fetch(`${APIURL}/user/`, {
       method: "GET",
       headers: new Headers({
@@ -30,10 +30,19 @@ function App() {
         Authorization: token,
       }),
     });
+    console.log('checkToken result',result)
     if (result.status !== 200) {
+      console.log('clearing token')
       clearToken();
+    } else{
+      const json=await result.json();
+      console.log('json',json)
+      setUser(json);
+      setSessionToken(token)
     }
   };
+ 
+
 
   const clearToken=()=>{
     localStorage.clear();
@@ -42,25 +51,28 @@ function App() {
   const updateToken=(newToken)=>{
     localStorage.setItem("token", newToken)
     console.log("token updated",newToken)
+    localStorage.setItem("token", newToken);
     setSessionToken(newToken);
+
   }
   const showThis = ()=>{
-    if(showAuth){
-      if(sessionToken===''){
+    if(sessionToken!==''){
+      return (
+        <Home user={user} adminLogin={adminLogin} sessionToken={sessionToken} clearToken={clearToken}/>
+      )
+    } else {
+      if(showAuth){
         return(
           <Auth setUser={setUser} setAdminLogin={setAdminLogin} updateToken={updateToken}/> 
         )
-      } else {
-        return (
-          <Home user={user} adminLogin={adminLogin} sessionToken={sessionToken} clearToken={clearToken}/>
-        )
-      }
     } else {
       return(
         <SplashPage setShowAuth={setShowAuth}/>
       )
-    }
+    } 
   }
+}
+
   return (
     <div className="App">
       {showThis()}
