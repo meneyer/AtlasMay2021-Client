@@ -10,7 +10,7 @@ import {
 } from 'reactstrap'
 import PollResults from './PollResults';
 import Poll from './Poll';
-
+import APIURL from '../../helpers/environment'
 
 const PollDisplay = (props) => {
   const user = props.user;
@@ -19,7 +19,7 @@ const PollDisplay = (props) => {
 
   const getPolls = () => {
     console.log(props.sessionToken)
-    const url = 'http://localhost:3000/poll/'
+    const url = `${APIURL}/poll/`
         console.log("got to here in fetch")
         fetch(url,
         {
@@ -73,8 +73,14 @@ const PollDisplay = (props) => {
         {polls.length > 0 ? pollButtonMapper() : null}
       </Row>
       <Row>
+        <h1>{`Poll # ${currPoll+1}`}</h1>
         {polls.length > 0 
-          ?<Poll user={user} sessionToken={props.sessionToken} poll={polls[currPoll]} pollNum={currPoll+1}/>
+          ?<Poll 
+            user={user} 
+            sessionToken={props.sessionToken} 
+            poll={polls[currPoll]} 
+            pollNum={currPoll+1}
+            hasVoted={user.pollsVotedOn.includes(polls[currPoll].id)}/>
           :null
         } 
       </Row>
