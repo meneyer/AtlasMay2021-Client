@@ -44,7 +44,7 @@ const PollDisplay = (props) => {
   const pollButtonMapper = () => {
     return (
       <ListGroup horizontal >
-        {polls.map((poll, i) => {
+        {polls.filter(poll => poll.published).map((poll, i) => {
           return(
             <ListGroupItem id="formBackgroundOppositeAlmostFull" tag="button" key={`poll${i}`} onClick = {() => {setCurrPoll(i)}}>
               <ListGroupItemHeading > {`Poll #${i+1}`} </ListGroupItemHeading>
