@@ -1,3 +1,145 @@
 .App {
   text-align: center;
 }
+
+/* CUSTOM CSS
+COLOR PALATTE
+Burgundy - 7F1020
+Copper Crayola - DD7245
+Lavendar Blue - C5CDF1
+Silver - C0C0C0
+Russian Violet - #1E064B
+
+font-family: 'Roboto', sans-serif */
+
+
+
+/* Base level CSS */
+#root{
+  /* background-color: white; */
+  /* font-family: ;   */
+  color: black;
+  width: auto;
+  height: 100vh;
+  overflow-x: hidden;
+  /* background-image: url(./assests/adi-goldstein-FU5uVjZSMMw-unsplash.jpg);   */
+  /* background-image: url(./assests/sagar-patil-8UcNYpynFLU-unsplash.jpg);  */
+  /* background-image: url(./assests/luke-besley-Mdz-EpieP3A-unsplash.jpg);  */
+  background-image: url(./assests/siora-photography-QkuVykuAo84-unsplash.jpg);
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2%;
+  color: #1E064B
+}
+
+#formBackground{
+  background-color: #DEE2F7;
+  opacity: 80%;
+  /* border-radius: 1%; */
+  padding: 1.5%;
+  border: 4px solid #1E064B;
+}
+
+#formBackgroundAlmostFull{
+  background-color: #DEE2F7;
+  opacity: 90%;
+  /* border-radius: 1%; */
+  padding: 1.5%;
+  border: 4px solid #1E064B;
+}
+
+#formBackgroundOpposite{
+  background-color: #1E064B;
+  opacity: 80%;
+  /* border-radius: 1%; */
+  padding: 1.5%;
+  border: 4px solid #DEE2F7;
+  color: #DEE2F7
+  }
+
+  #formBackgroundOppositeAlmostFull{
+    background-color: #1E064B;
+    opacity: 93%;
+    /* border-radius: 1%; */
+    padding: 1.5%;
+    border: 4px solid #DEE2F7;
+    color: #DEE2F7
+    }
+
+#formLabels{
+  font-size: 1.25em;
+  text-align: right;
+}
+
+#formLabelsSmaller{
+  font-size: 1.15em;
+  text-align: right;
+}
+
+#formButton{
+  transition: 0.4s;
+  background-color: #1E064B;
+  border: 2px solid #1E064B;
+  color: #C5CDF1;
+  font-size: 1.25em;
+}
+
+#formButton:hover{
+  background-color: #C5CDF1;
+  border: 2px solid #1E064B;
+  color: #1E064B;
+}
+
+#splashPageBackground{
+  background-color: #DEE2F7;
+  /* opacity: 80%; */
+  /* border-radius: 1%; */ 
+  padding: 1.5%; 
+  border: 4px solid #1E064B;
+}
+
+#splashPageHeader{
+  font-size: 4em;
+}
+
+#splashPageWords{
+  font-size: 3em;
+}
+
+#splashPageDescription{
+  font-size: 1.5em
+}
+
+#footer {
+  background-color: #C5CDF1;
+  opacity: 80%;  
+  color: #1E064B;
+  position: fixed;
+  bottom: 0;
+  height: 6%;
+  width: 100vw;
+  margin: 0-2%;
+  padding: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #1E064B;
+}
+
+
+
+#header {
+  background-color: #C5CDF1;
+  opacity: 80%;  
+  color: #1E064B;
+  position: fixed;
+  top: 0;
+  height: 6%;
+  width: 100vw;
+  margin: 0-2%;
+  padding: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
