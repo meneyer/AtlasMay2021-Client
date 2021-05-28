@@ -9,7 +9,6 @@ import PollDisplay from './poll/PollDisplay'
 const Home = (props)=> {
 
 const [adminView,setAdminView]=useState(false);
-
     return (
       <div >
         <HeaderBar 
