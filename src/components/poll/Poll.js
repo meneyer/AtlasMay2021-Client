@@ -18,6 +18,7 @@ import APIURL from '../../helpers/environment'
 import PollResults from './PollResults'
 
 const Poll = (props) => {
+  console.log(props.poll);
   const user = props.user;
   const sessionToken = props.sessionToken;
   const poll = props.poll;
@@ -42,6 +43,7 @@ const Poll = (props) => {
         .then((res) => res.json())
         .then((optionData) => {
             setOptions(optionData)
+
             let makeVotes = [];
             let makeSelections = [];
             optionData.forEach(option => {
@@ -51,7 +53,8 @@ const Poll = (props) => {
               
             setVotes(makeVotes);
             setSelections(makeSelections);
-            
+            console.log(optionData);
+
         })
         .catch(err => console.log(`Failed option fetch: ${err}`));
   };
@@ -63,11 +66,12 @@ const Poll = (props) => {
 
   let renderMultiSelectForm = () => {
     return (
+
       <FormGroup tag="fieldset">
          {options.map((option, i) => {
            return(
             <FormGroup check>
-              <Label check>
+              <Label check id="formLabelsSmaller">
                 <Input 
                   type="checkbox" 
                   onChange={handleMultiInput}
@@ -81,6 +85,7 @@ const Poll = (props) => {
     )
   }
 
+
   let handleMultiInput = (e) => {
     let selected = Number(e.currentTarget.dataset.option_num);
     let currSelections = selections;
@@ -91,12 +96,13 @@ const Poll = (props) => {
 
   let renderSingleSelectForm = () => {
     return (
+
       
       <FormGroup tag="fieldset">
          {options.map((option, i) => {
            return(
             <FormGroup check>
-              <Label check>
+              <Label check id="formLabelsSmaller">
                 <Input 
                   type="radio" 
                   name={`poll_${poll.id}_options`} 
@@ -134,6 +140,7 @@ const Poll = (props) => {
         ? renderMultiSelectForm()
         : renderSingleSelectForm()}
         <Button id='formButton' disabled={hasVoted}>Submit</Button>
+
       </Form>
     )
   }
@@ -199,10 +206,10 @@ const Poll = (props) => {
   return (
     <Container className="poll-main" >
       <Row>
-        <Col md="6" id="formBackground">
+        <Col md="5" id="formBackgroundAlmostFull">
           {renderPollForm()}
         </Col>
-        <Col md="6" id="formBackground">
+        <Col md="7" id="formBackgroundAlmostFull">
           <PollResults options={options} votes={votes}/>
         </Col>
       </Row>

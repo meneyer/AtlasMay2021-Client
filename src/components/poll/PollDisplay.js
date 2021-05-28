@@ -43,12 +43,12 @@ const PollDisplay = (props) => {
 
   const pollButtonMapper = () => {
     return (
-      <ListGroup horizontal>
+      <ListGroup horizontal >
         {polls.map((poll, i) => {
           return(
-            <ListGroupItem tag="button" key={`poll${i}`} onClick = {() => {setCurrPoll(i)}}>
-              <ListGroupItemHeading> {`Poll #${i+1}`} </ListGroupItemHeading>
-              <ListGroupItemText> {`${poll.question}`} </ListGroupItemText>
+            <ListGroupItem id="formBackgroundOppositeAlmostFull" tag="button" key={`poll${i}`} onClick = {() => {setCurrPoll(i)}}>
+              <ListGroupItemHeading > {`Poll #${i+1}`} </ListGroupItemHeading>
+              <ListGroupItemText > {`${poll.question}`} </ListGroupItemText>
             </ListGroupItem>
           )
         })}
@@ -59,9 +59,16 @@ const PollDisplay = (props) => {
 
   return (
     <Container className="poll-display-main">
-      <Row className="poll-display-header"> 
-        <h1> {`Welcome ${user.userName}. Select a poll to answer and view results.`}</h1>
+      <Row > 
+      <Col md="2"></Col>
+      <Col md="8" id="formBackgroundOpposite">
+        <h1> {`Welcome ${user.userName}`}</h1>
+        <h3> Select a poll to answer and view results.</h3>
+      </Col>
+      <Col md="2"></Col>
       </Row>
+        <br />
+        <br />
       <Row>
         {polls.length > 0 ? pollButtonMapper() : null}
       </Row>
