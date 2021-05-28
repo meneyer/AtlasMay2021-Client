@@ -42,14 +42,14 @@ const Login=(props)=>{
     
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup row>
-                    <Label for="username" md={2} style={{textAlign: 'right'}}>Username:</Label>
+                    <Label for="username" md={2} id="formLabels" >Username:</Label>
                     <Col md={9}>
                         <Input placeholder='Username' onChange={(e)=>setUsername(e.target.value)}/>
                     </Col>
                 </FormGroup>
 
                 <FormGroup row>
-                    <Label for="password" sm={2} style={{textAlign: 'right'}}>Password:</Label>
+                    <Label for="password" sm={2} id="formLabels" >Password:</Label>
                     <Col md={9}>
                         <Input placeholder='Password' onChange={(e)=>setPassword(e.target.value)}/>
                     </Col>

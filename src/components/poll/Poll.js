@@ -48,30 +48,44 @@ const Poll = (props) => {
 
   let renderMultiSelectForm = () => {
     return (
-      <FormGroup>
-        <Input type="select" name="selectMulti" id="exampleSelect" multiple>
-          <option>--- Select multiple ---</option>
-          {options.map((option, i) => {
-            return(
-              <option key={i} >{option.text}</option>
-            )
-          })}
-        </Input>
+
+      <FormGroup tag="fieldset">
+         {options.map((option, i) => {
+           return(
+            <FormGroup check>
+              <Label check id="formLabelsSmaller">
+                <Input 
+                  type="checkbox" 
+                  onChange={handleMultiInput}
+                  data-option_num={i}/>{' '}
+                {`${option.text}`}
+              </Label>
+            </FormGroup>
+           )}
+         )}
       </FormGroup>
     )
   }
 
   let renderSingleSelectForm = () => {
     return (
-      <FormGroup>
-        <Input type="select" name="select" id="exampleSelect">
-          <option>--- Select one ---</option>
-          {options.map((option, i) => {
-            return(
-              <option key={i} >{option.text}</option>
-            )
-          })}
-        </Input>
+
+      
+      <FormGroup tag="fieldset">
+         {options.map((option, i) => {
+           return(
+            <FormGroup check>
+              <Label check id="formLabelsSmaller">
+                <Input 
+                  type="radio" 
+                  name={`poll_${poll.id}_options`} 
+                  onChange={handleSingleInput}
+                  data-option_num={i}/>
+                  {`${option.text}`}
+              </Label>
+            </FormGroup>
+           )}
+         )}
       </FormGroup>
     )
   }
@@ -80,9 +94,11 @@ const Poll = (props) => {
       <Form onSubmit={(e)=>{handleSubmit(e)}}>
         <h3>{`Poll #${pollNum}`}</h3>
         <h4>{`${poll.question}`}</h4>
+       
         {poll.multiSelect
         ? renderMultiSelectForm()
         : renderSingleSelectForm()}
+        <br />
         <Button id='formButton'>Submit</Button>
       </Form>
     )
@@ -103,13 +119,13 @@ const Poll = (props) => {
 
   return (
     <Container className="poll-main" >
-      <Row>
-        <Col md="6" id="formBackground">
+      <Row>        
+        <Col md="5" id="formBackgroundAlmostFull">
         {renderPollForm()}
         </Col>
-        <Col md="6" id="formBackground">
+        <Col md="7" id="formBackgroundAlmostFull">
         {renderResults()}
-        </Col>
+        </Col>      
       </Row>
     </Container>
   )

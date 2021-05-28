@@ -59,15 +59,15 @@ const CreatePoll=(props)=>{
           }
       }
     return(
-        <div style={{backgroundColor:'lightgrey'}}>
+        <div id="formBackground">
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup row>
-                    <Label for="question" md={2} style={{textAlign: 'right'}}>Poll question:</Label>
+                    <Label for="question" md={2} id="formLabels">Poll question:</Label>
                     <Col md={9}>
                         <Input placeholder='' onChange={(e)=>setQuestion(e.target.value)}/>
                     </Col>
                 </FormGroup>
-                <Label for="admin"  style={{ textAlign: "right",marginTop:'0' }}>
+                <Label for="admin" id="formLabels">
               Allow multiple select <Switch
                 onChange={handleChange}
                 checked={checked}
@@ -77,7 +77,7 @@ const CreatePoll=(props)=>{
                 {optionsArray.map((option,index)=>{
                     return(
                         <FormGroup row>
-                    <Label for={`option${1}`} sm={2} style={{textAlign: 'right'}}>{`Option ${index+1}`}:</Label>
+                    <Label for={`option${1}`} sm={2} id="formLabels">{`Option ${index+1}`}:</Label>
                     <Col md={9}>
                         <Input   onChange={(e)=>changeArray(e.target.value,index)}/>
                     </Col>
@@ -92,7 +92,7 @@ const CreatePoll=(props)=>{
                         <Input placeholder='option'  onChange={(e)=>changeArray(e.target.value,1)}/>
                     </Col>
                 </FormGroup> */}
-                
+                <br />
                 <br />
                 <ButtonToggle id="formButton" onClick={(e)=>handleSubmit(e)}>Submit</ButtonToggle>
             </Form>
