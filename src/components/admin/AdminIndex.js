@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import CreatePoll from './CreatePoll';
-import PollResults from './PollResults';
+import AdminPollResults from './AdminPollResults';
 
 
 const AdminIndex=(props)=>{
     return(
         <div>
     <CreatePoll sessionToken={props.sessionToken}/>
-    <PollResults sessionToken={props.sessionToken}/>
+    <AdminPollResults sessionToken={props.sessionToken}/>
         </div>
     )
 }
