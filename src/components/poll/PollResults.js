@@ -72,7 +72,11 @@ const PollResults = (props) => {
       {/* <button onClick={randColor}>Color</button> */}
       <Row className="poll-results-header"> 
         <h2> Results</h2>
-        <Doughnut data={data} />
+        <Col></Col>
+        <Col md="8">
+          <Doughnut data={data} />
+        </Col>
+        <Col></Col>
       </Row>
       
     </Container>
