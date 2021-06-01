@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import {
   Container, 
   Row, 
@@ -75,7 +76,8 @@ const Poll = (props) => {
                 <Input 
                   type="checkbox" 
                   onChange={handleMultiInput}
-                  data-option_num={i}/>{' '}
+                  data-option_num={i}
+                  disabled={hasVoted}/>{' '}
                 {`${option.text}`}
               </Label>
             </FormGroup>
@@ -107,7 +109,8 @@ const Poll = (props) => {
                   type="radio" 
                   name={`poll_${poll.id}_options`} 
                   onChange={handleSingleInput}
-                  data-option_num={i}/>
+                  data-option_num={i}
+                  disabled={hasVoted}/>
                   {`${option.text}`}
               </Label>
             </FormGroup>
@@ -206,15 +209,45 @@ const Poll = (props) => {
   return (
     <Container className="poll-main" >
       <Row>
-        <Col md="5" id="formBackgroundAlmostFull">
+        <Col md="4" id="formBackgroundAlmostFull">
           {renderPollForm()}
         </Col>
-        <Col md="7" id="formBackgroundAlmostFull">
-          <PollResults options={options} votes={votes}/>
+        <Col md="8" id="formBackgroundNearlyFull">
+          {hasVoted ? <PollResults options={options} votes={votes}/> : <h3>Vote to see the results!</h3>}
         </Col>
       </Row>
     </Container>
   )
+}
+
+Poll.propTypes = {
+  user: PropTypes.shape({
+    isAdmin: PropTypes.bool,
+    pollsVotedOn:PropTypes.arrayOf(PropTypes.number),
+    sessionToken: PropTypes.string,
+    userId: PropTypes.number,
+    userName: PropTypes.string
+  }),
+  sessionToken: PropTypes.string,
+  poll: PropTypes.shape({
+    createdAt:PropTypes.string,
+    id: PropTypes.number,
+    multiSelect: PropTypes.bool,
+    published: PropTypes.bool,
+    question: PropTypes.string,
+    updatedAt: PropTypes.string
+  }).isRequired,
+  pollNum: PropTypes.number,
+  hasVoted: PropTypes.bool
+}
+
+Poll.defaultProps = {
+  user: PropTypes.shape({
+    authenticated: false
+  }),
+  sessionToken: "",
+  pollNum: 0,
+  hasVoted: false
 }
 
 export default Poll;
