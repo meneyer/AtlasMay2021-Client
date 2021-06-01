@@ -47,7 +47,7 @@ const SplashPage=(props)=>{
                 <hr />   
 
 
-                <img src={Image1} width="35%" />             
+                <img src={Image1} width="35%" alt=""/>             
 
             </Container>
         </div>
