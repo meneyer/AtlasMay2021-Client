@@ -61,19 +61,18 @@ const PollDisplay = (props) => {
     <Container className="poll-display-main">
       <Row > 
       <Col md="2"></Col>
-      <Col md="8" id="formBackgroundOpposite">
-        <h1> {`Welcome ${user.userName}`}</h1>
+      <Col md="8" id="formBackgroundOpposite" >
+        <h1 > {`Welcome ${user.userName}`}</h1>
         <h3> Select a poll to answer and view results.</h3>
       </Col>
       <Col md="2"></Col>
       </Row>
-        <br />
-        <br />
-      <Row>
+        <br />  
+      <Row >
         {polls.length > 0 ? pollButtonMapper() : null}
-      </Row>
-      <Row>
-        <h1>{`Poll # ${currPoll+1}`}</h1>
+      </Row> 
+      <Row >        
+        <h1 id="formBackground" >{`Poll # ${currPoll+1}`}</h1>
         {polls.length > 0 
           ?<Poll 
             user={user} 

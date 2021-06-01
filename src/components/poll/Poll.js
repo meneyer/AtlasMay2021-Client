@@ -207,10 +207,10 @@ const Poll = (props) => {
   return (
     <Container className="poll-main" >
       <Row>
-        <Col md="5" id="formBackgroundAlmostFull">
+        <Col md="4" id="formBackgroundAlmostFull">
           {renderPollForm()}
         </Col>
-        <Col md="7" id="formBackgroundAlmostFull">
+        <Col md="8" id="formBackgroundNearlyFull">
           {hasVoted ? <PollResults options={options} votes={votes}/> : <h3>Vote to see the results!</h3>}
         </Col>
       </Row>
