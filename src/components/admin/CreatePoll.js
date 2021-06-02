@@ -37,7 +37,8 @@ const CreatePoll=(props)=>{
           }),
         });
         const res = await result.json();
-        handleOptions(res.id)
+        handleOptions(res.id);
+        alert('You have created a poll!')
         
       };
       const handleOptions=async(id)=>{
