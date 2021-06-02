@@ -61,7 +61,7 @@ const CreatePoll=(props)=>{
           }
       }
     return(
-        <div id="formBackground">
+        <div id="formBackgroundAlmostFull">
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup row>
                     <Label for="question" md={2} id="formLabels">Poll question:</Label>
@@ -70,7 +70,7 @@ const CreatePoll=(props)=>{
                     </Col>
                 </FormGroup>
                 <Label for="admin" id="formLabels">
-              Employees can vote on mulitple options <Switch
+              Employees can vote on multiple options <Switch
                 onChange={handleChange}
                 checked={checked}
                 className="react-switch"
