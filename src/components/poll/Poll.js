@@ -19,7 +19,6 @@ import APIURL from '../../helpers/environment'
 import PollResults from './PollResults'
 
 const Poll = (props) => {
-  console.log(props.poll);
   const user = props.user;
   const sessionToken = props.sessionToken;
   const poll = props.poll;
@@ -54,7 +53,6 @@ const Poll = (props) => {
               
             setVotes(makeVotes);
             setSelections(makeSelections);
-            console.log(optionData);
 
         })
         .catch(err => console.log(`Failed option fetch: ${err}`));
