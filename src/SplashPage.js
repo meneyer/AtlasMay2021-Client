@@ -6,7 +6,7 @@ import {useState,useEffect} from 'react'
 
 
 const SplashPage=(props)=>{
-    const [showPreview, setShowPreview]=useState(false); // allow for unauthenticated users to see the polls
+    const [showPreview, setShowPreview]=useState(true); // allow for unauthenticated users to see the polls
 
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
@@ -35,7 +35,10 @@ const SplashPage=(props)=>{
                     </Row>
                 </Container>
                 <Modal isOpen={modal} toggle={toggle} external={externalCloseBtn} id="modalBackground">
-                    <ModalHeader style={{display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#C5CDF1"}} ><Button size="lg" style={{backgroundColor: "#1E064B"}} onClick={()=>setShowPreview(!showPreview)}>Click to See Survey Questions</Button></ModalHeader>
+                    <ModalHeader style={{display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#C5CDF1"}}>
+                        <h2 style={{fontWeight: "bold"}}>Survey Questions</h2>
+                        {/* <Button size="lg" style={{backgroundColor: "#1E064B"}} onClick={()=>setShowPreview(!showPreview)}>Click to See Survey Questions</Button> */}
+                        </ModalHeader>
                     <ModalBody style={{backgroundColor: "#C5CDF1"}}>
                         {showPreview ? <Preview/> : null}
                     </ModalBody>
