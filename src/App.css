@@ -71,14 +71,36 @@ font-family: 'RocknRoll One', sans-serif; */
   color: #DEE2F7
   }
 
-  #formBackgroundOppositeAlmostFull{
-    background-color: #1E064B;
-    opacity: .93;
-    /* border-radius: 1%; */
-    padding: 1.5%;
-    border: 4px solid #DEE2F7;
-    color: #DEE2F7
+#formBackgroundOppositeAlmostFull{
+  background-color: #1E064B;
+  opacity: .93;
+  /* border-radius: 1%; */
+  padding: 1.5%;
+  border: 4px solid #DEE2F7;
+  color: #DEE2F7
+  }
+
+#tableBackgroundOppositeAlmostFull{
+  background-color: #1E064B;
+  opacity: .93;
+  /* border-radius: 1%; */
+  padding: 1.5%;
+  border: 4px solid #DEE2F7;
+  color: #DEE2F7;
+  font-size: 1.45em; 
+  vertical-align: middle;
+  }
+
+  #insideTable{ 
+    color: #DEE2F7;
+    font-size: 1em;
     }
+
+th{
+  color: #BF9D73;
+  font-family: 'RocknRoll One', sans-serif;
+  font-weight: lighter;
+}
 
 #formLabels{
   font-size: 1.25em;
@@ -102,6 +124,20 @@ font-family: 'RocknRoll One', sans-serif; */
   background-color: #c5cdf1;
   border: 2px solid #1e064b;
   color: #1e064b;
+}
+
+#formButtonOpposite {
+  transition: 0.4s;
+  background-color: #c5cdf1;
+  border: 2px solid #c5cdf1;
+  color: #1e064b;
+  font-size: 1em;
+}
+
+#formButtonOpposite:hover {
+  background-color: #1e064b;
+  border: 2px solid #c5cdf1;
+  color: #c5cdf1;
 }
 
 .form-check {

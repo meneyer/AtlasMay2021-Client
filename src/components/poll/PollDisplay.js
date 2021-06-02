@@ -18,9 +18,7 @@ const PollDisplay = (props) => {
   const [currPoll, setCurrPoll] = useState(0);
 
   const getPolls = () => {
-    console.log(props.sessionToken)
     const url = `${APIURL}/poll/`
-        console.log("got to here in fetch")
         fetch(url,
         {
             method: 'GET',
@@ -33,8 +31,9 @@ const PollDisplay = (props) => {
           return res.json()
         })
         .then((pollData) => {
-            setPolls(pollData)
-            console.log(pollData);
+          let publishedPolls = pollData.filter(poll => poll.published);
+          setPolls(publishedPolls)
+          console.log(polls)
         })
         .catch(err => console.log(`Failed poll fetch: ${err}`));
   }

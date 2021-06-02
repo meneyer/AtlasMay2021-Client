@@ -37,7 +37,8 @@ const CreatePoll=(props)=>{
           }),
         });
         const res = await result.json();
-        handleOptions(res.id)
+        handleOptions(res.id);
+        alert('You have created a poll!')
         
       };
       const handleOptions=async(id)=>{
@@ -60,7 +61,7 @@ const CreatePoll=(props)=>{
           }
       }
     return(
-        <div id="formBackground">
+        <div id="formBackgroundAlmostFull">
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup row>
                     <Label for="question" md={2} id="formLabels">Poll question:</Label>
