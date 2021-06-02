@@ -27,11 +27,11 @@ const AdminPollHelper = (props) => {
   }, []);
 
   return (
-    <Table >
+    <Table id="insideTable">
       <thead>
         <tr>
           <th>Option</th>
-          <th># of Votes</th>
+          <th>Number of Votes</th>
         </tr>
       </thead>
       <tbody>

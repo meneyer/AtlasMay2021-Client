@@ -72,7 +72,7 @@ const AdminPollResults = (props) => {
     .then(()=>getPolls())
   }
   return (
-    <Table style={{backgroundColor:"#C0C0C0"}}>
+    <Table id="tableBackgroundOppositeAlmostFull">
       <thead>
         <tr>
           <th>Poll question</th>
@@ -85,13 +85,16 @@ const AdminPollResults = (props) => {
         {polls?.map((poll) => {
           return (
             <tr key={poll.id}>
-              <td>{poll.question}</td>
-              <td>
-                  <AdminPollHelper sessionToken={props.sessionToken} poll={poll}/>
+              <td>                
+                {poll.question}</td>
+              <td style={{textAlign: "left"}}>
+                  <AdminPollHelper sessionToken={props.sessionToken} poll={poll} />
                   
               </td>
-              <td><Button onClick={()=>changeActive(poll)}>{poll.published?"Yes":"No"}</Button></td>
-              <td><Button onClick={()=>deletePoll(poll)}>Delete</Button></td>
+              <td>
+                <Button id="formButtonOpposite" onClick={()=>changeActive(poll)}>{poll.published?"Yes":"No"}</Button></td>
+              <td>
+              <Button id="formButtonOpposite" onClick={()=>deletePoll(poll)}>Delete</Button></td>
             </tr>
           );
         })}

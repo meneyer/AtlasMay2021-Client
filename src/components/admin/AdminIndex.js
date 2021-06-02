@@ -8,6 +8,7 @@ const AdminIndex=(props)=>{
     return(
         <div>
             <CreatePoll sessionToken={props.sessionToken}/>
+            <br />
             <AdminPollResults sessionToken={props.sessionToken}/>    
         </div>
     )

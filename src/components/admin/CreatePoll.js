@@ -60,7 +60,7 @@ const CreatePoll=(props)=>{
           }
       }
     return(
-        <div id="formBackground">
+        <div id="formBackgroundAlmostFull">
             <Form onSubmit={(e)=>handleSubmit(e)}>
                 <FormGroup row>
                     <Label for="question" md={2} id="formLabels">Poll question:</Label>
