@@ -69,7 +69,7 @@ const CreatePoll=(props)=>{
                     </Col>
                 </FormGroup>
                 <Label for="admin" id="formLabels">
-              Employees can vote on mulitple options <Switch
+              Employees can vote on multiple options <Switch
                 onChange={handleChange}
                 checked={checked}
                 className="react-switch"
