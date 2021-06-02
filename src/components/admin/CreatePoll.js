@@ -22,12 +22,13 @@ const CreatePoll=(props)=>{
     }
     
     const handleSubmit = async (e) => {
+      console.log(props.sessionToken)
         e.preventDefault();
         const result = await fetch(`${APIURL}/poll`, {
           method: "POST",
           body: JSON.stringify({
             question: question,
-            published: true,
+            published: false,
             multiSelect: checked
           }),
           headers: new Headers({

@@ -90,7 +90,7 @@ const AdminPollResults = (props) => {
                   <AdminPollHelper sessionToken={props.sessionToken} poll={poll}/>
                   
               </td>
-              <td><Button onClick={()=>changeActive(poll)}>Make {poll.published?"inactive":"active"}</Button></td>
+              <td><Button onClick={()=>changeActive(poll)}>{poll.published?"Yes":"No"}</Button></td>
               <td><Button onClick={()=>deletePoll(poll)}>Delete</Button></td>
             </tr>
           );
