@@ -32,7 +32,7 @@ const AdminIndex=(props)=>{
 
     const deletePollResults = (polls) => {
         console.log(props.sessionToken)
-        const url = `${APIURL}/poll/:id`
+        const url = `${APIURL}/poll/${polls.id}`
         console.log("got to here in fetch")
         fetch(url,
         {
@@ -50,8 +50,7 @@ const AdminIndex=(props)=>{
         return props.options.map((options) => {
             return (
                 <div>
-    
-                    <Button onClick={() => {props.getPolls(options)}}>Get All Poll Results</Button>
+                    <Button onClick={() => {props.getPolls()}}>Get All Poll Results</Button>
                     <Button onClick={() => {deletePollResults(polls)}}>delete</Button>
                 </div>
             )
@@ -63,6 +62,7 @@ const AdminIndex=(props)=>{
     return(
         <div>
     <CreatePoll sessionToken={props.sessionToken}/>
+    {pollMapper()}
         </div>
     )
 }
