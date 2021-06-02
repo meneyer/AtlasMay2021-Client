@@ -18,10 +18,8 @@ font-family: 'Rock Salt', cursive; <<--Titles
 font-family: 'Roboto', sans-serif;
 font-family: 'RocknRoll One', sans-serif; */
 
-
-
 /* Base level CSS */
-#root{
+#root {
   /* background-color: white; */
   /* font-family: ;   */
   color: black;
@@ -32,7 +30,7 @@ font-family: 'RocknRoll One', sans-serif; */
   /* background-image: url(./assests/sagar-patil-8UcNYpynFLU-unsplash.jpg);  */
   /* background-image: url(./assests/luke-besley-Mdz-EpieP3A-unsplash.jpg);  */
   background-image: url(./assests/siora-photography-QkuVykuAo84-unsplash.jpg);
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 2%;
@@ -45,7 +43,7 @@ font-family: 'RocknRoll One', sans-serif; */
   opacity: .8;
   /* border-radius: 1%; */
   padding: 1.5%;
-  border: 4px solid #1E064B;
+  border: 4px solid #1e064b;
 }
 
 #formBackgroundAlmostFull{
@@ -61,7 +59,7 @@ font-family: 'RocknRoll One', sans-serif; */
   opacity: .96;
   /* border-radius: 1%; */
   padding: 1.5%;
-  border: 4px solid #1E064B;
+  border: 4px solid #1e064b;
 }
 
 #formBackgroundOpposite{
@@ -87,23 +85,27 @@ font-family: 'RocknRoll One', sans-serif; */
   text-align: right;
 }
 
-#formLabelsSmaller{
+#formLabelsSmaller {
   font-size: 1.15em;
   text-align: right;
 }
 
-#formButton{
+#formButton {
   transition: 0.4s;
-  background-color: #1E064B;
-  border: 2px solid #1E064B;
-  color: #C5CDF1;
+  background-color: #1e064b;
+  border: 2px solid #1e064b;
+  color: #c5cdf1;
   font-size: 1.25em;
 }
 
-#formButton:hover{
-  background-color: #C5CDF1;
-  border: 2px solid #1E064B;
-  color: #1E064B;
+#formButton:hover {
+  background-color: #c5cdf1;
+  border: 2px solid #1e064b;
+  color: #1e064b;
+}
+
+.form-check {
+  text-align: left !important;
 }
 
 #splashPageBackground{
@@ -114,12 +116,12 @@ font-family: 'RocknRoll One', sans-serif; */
   border: 4px solid #1E064B;
 }
 
-#splashPageHeader{
+#splashPageHeader {
   font-size: 4em;
   
 }
 
-#splashPageWords{
+#splashPageWords {
   font-size: 3em;
 }
 
@@ -151,12 +153,11 @@ font-family: 'RocknRoll One', sans-serif; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #1E064B;
+  color: #1e064b;
 }
 
-
-
 #header {
+
   background-color: #C5CDF1;
   opacity: .8;  
   color: #1E064B;
