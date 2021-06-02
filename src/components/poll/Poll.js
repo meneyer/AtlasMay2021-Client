@@ -98,8 +98,6 @@ const Poll = (props) => {
 
   let renderSingleSelectForm = () => {
     return (
-
-      
       <FormGroup tag="fieldset">
          {options.map((option, i) => {
            return(
